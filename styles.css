@@ -1,91 +1,324 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset default margin & padding */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-align: center; /* Center-align text content within the body */
-}
-
+  }
+  
+/* Base body styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #f0f2f5;
+    color: #333;
+  }
+  
+/* Header styling */
 header {
-    background-color: #333;
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
     color: white;
     padding: 1rem 0;
-}
-
-.project {
-    background: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-h1, h2, h3 {
-    color: #333;
-}
-.project img {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
 nav ul {
     list-style-type: none;
     padding: 0;
-}
-
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
 nav ul li {
-    display: inline;
-    margin: 0 1rem;
-}
-
+    display: flex;
+    margin-right: 40px;
+  }
+  
 nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-}
-
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+nav ul li a:hover {
+    color: #ff416c;
+  }
+  
+/* Hero section */
+.hero {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364),
+                url('image/hero-bg.jpeg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+/* Floating hero images overlay */
+.hero-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+/* Sliding animation for hero images */
+@keyframes slideImages {
+    0% {
+      transform: translateX(100vw);
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      transform: translateX(-100vw);
+      opacity: 0.1;
+    }
+  }
+  
+/* Apply new sliding animation to hero images */
+.hero-images img {
+    position: absolute;
+    width: 300px;
+    border-radius: 50%;
+    animation: slideImages 60s linear infinite;
+    opacity: 0.1;
+  }
+  
+/* Stagger the start time of each image animation for a continuous effect */
+.hero-images img:nth-child(1) {
+    top: 10%;
+    left: -350px;
+    animation-delay: 5s;
+  }
+  
+.hero-images img:nth-child(2) {
+    top: 20%;
+    right: -650px;
+    animation-delay: 5s;
+  }
+  
+.hero-images img:nth-child(3) {
+    top: 10%;
+    left: -950px;
+    animation-delay: 5s;
+  }
+  
+/* Hero content on top */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s ease-out;
+    position: relative;
+    z-index: 2;
+  }
+  
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+.hero .btn {
+    background: #ff4b2b;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+.hero .btn:hover {
+    background: #ff416c;
+    transform: translateY(-3px);
+  }
+  
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.4rem;
+    }
+  
+    .hero p {
+      font-size: 1.1rem;
+    }
+  }
+  
+/* Main content area */
 main {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center-align content horizontally */
-    justify-content: center; /* Center-align content vertically */
-    min-height: calc(100vh - 160px); /* Adjust based on header and footer heights */
-}
-
-.content {
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 160px);
+  }
+  
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+h2, h3 {
+    color: #ff4b2b;
+    margin: 20px 0 10px;
+  }
+  
+p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    line-height: 1.7;
+  }
+  
+/* Project / content card styling */
+.project, .content {
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+.project:hover, .content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  }
+  
+.project img {
+    max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-h1, h2 {
-    color: #333;
-}
+  }
+  
+/* Image container styling */
+.image-container img {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+.image-text {
+    margin-top: 12px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #222;
+  }
+  
+/* Contact section */
 .contact-info, .contact-form {
     margin-bottom: 20px;
-}
+  }
+  
 .contact-info a {
     color: #0066cc;
     text-decoration: none;
-}
+  }
+  
 .contact-info a:hover {
     text-decoration: underline;
-}
-
+  }
+  
+/* Footer */
 footer {
-    background-color: #333;
+    background-color: #222;
     color: white;
     text-align: center;
-    padding: 0.5rem 0;
-    height: 20px;
-    line-height: 20px; /* Adjust based on footer height */
+    padding: 0.8rem 0;
+    height: 40px;
+    line-height: 30px;
     position: fixed;
     width: 100%;
     bottom: 0;
-}
-
+  }
+  
+/* Spacer */
 .spacer {
-    height: 20px; /* Adjust the height as needed */
+    height: 50px;
+  }
+  
+/* Button style (optional future use) */
+.btn {
+    display: inline-block;
+    background: #ff4b2b;
+    color: #fff;
+    padding: 12px 30px;
+    margin-top: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+.btn:hover {
+    background: #ff416c;
+    transform: translateY(-3px);
+  }
+  
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+main section {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+/* Responsive nav adjustments */
+@media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    h1 {
+      font-size: 2.2rem;
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+/* Slider styles */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    overflow: hidden; /* Ensures images outside the container are hidden */
 }
 
+/* Style for the slide images */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
 
+/* Resize the images to make them smaller */
+.slides img {
+    width: 60%; /* Adjust the width percentage to make the images smaller */
+    height: auto; /* Maintains the aspect ratio */
+    margin: 0 auto; /* Centers the images inside the slider */
+}

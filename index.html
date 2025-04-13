@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
@@ -13,21 +14,46 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="cv.html">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
+
+    <section class="hero">
+        <div class="hero-content">
+          <h1>Welcome to My Portfolio</h1>
+          <p>Showcasing my latest projects, ideas, and creativity.</p>
+          <a href="view_my_work.html" class="btn">View My Work</a>
+        </div>
+      </section>
+      
     <main>
         <section>
             <h1>Welcome to My Portfolio Project Journey!</h1>
 	    <p>Hello and welcome! I'm Nweze Isaiah Ifeanyi, A passionate Software Engineering Master's Student at the University of Greater Manchester, United Kingdom. <br>I am also an ALX Africa alumni focused on back-end development. Here on my portfolio, <br> you'll find a collection of projects that showcase my skills, creativity, and growth throughout my ALX learning experience.</p>
 
             <div class="image-container">
-                <img src="image/Photo.jpeg" alt="Nweze Isaiah Ifeanyi" style="width: 300px; height: auto;">
+                <img src="image/Photo.jpg" alt="Nweze Isaiah Ifeanyi" style="width: 300px; height: auto;">
                 <div class="image-text"> <b>Engr. Nweze Isaiah Ifeanyi</b> (Back-end Developer)</div>
             </div>
 
+            <div class="hero-images">
+                <img src="image/bg-img1.jpg" alt="Barclays UK">
+                <img src="image/bg-img2.jpg" alt="Primarks, UK">
+                <img src="image/bg-img3.jpg" alt="Software Engineering Class">
+              </div>
+
+              <div class="slider">
+                <div class="slides">
+                    <img src="image/bg-img1.jpg" alt="Barclays UK">
+                    <img src="image/bg-img2.jpg" alt="Primarks, UK">
+                    <img src="image/bg-img3.jpg" alt="Software Engineering Class">
+                </div>
+              
+                <button class="slider-btn" id="prev">&#10094;</button>
+                <button class="slider-btn" id="next">&#10095;</button>
+              </div>
+              
        <p> <h3> <b> What You'll Find Here </b> </h3> </p>
     Explore my projects to see how I've applied my learning to real-world scenarios. <br> Each project represents a milestone in my journey, demonstrating not only technical proficiency <br> but also problem-solving abilities and attention to detail. <br> <a href="https://github.com/Isaiah19?tab=repositories" target="_blank">View My Project on GitHub</a>
 
@@ -43,6 +69,27 @@
     <footer>
         &copy; 2024 Nweze Isaiah Ifeanyi
     </footer>
+
+    <script>
+  const slides = document.querySelector('.slides');
+  const images = document.querySelectorAll('.slides img');
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+
+  let index = 0;
+
+  function showSlide(i) {
+    index = (i + images.length) % images.length;
+    slides.style.transform = `translateX(${-index * 0}%)`;
+  }
+
+  nextBtn.addEventListener('click', () => showSlide(index + 1));
+  prevBtn.addEventListener('click', () => showSlide(index - 1));
+
+  // Auto-slide every 3 seconds
+  setInterval(() => showSlide(index + 1), 100);
+</script>
+
 </body>
 </html>
 
